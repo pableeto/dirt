@@ -13,10 +13,12 @@ namespace shaders
     };
 
     extern Shader const
+        //Rasterize
         forward_vertex,
         forward_fragment,
         backward_vertex,
-        backward_fragment;
+        backward_fragment,
+        //Pixel Render
 }
 
 #endif //SHADERS_H

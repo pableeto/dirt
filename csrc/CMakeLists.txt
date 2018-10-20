@@ -30,6 +30,9 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ffast-math")
 
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_30 --expt-relaxed-constexpr")
 
+add_definitions(-std=c++11)
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
+
 add_library(
     rasterise SHARED
     rasterise_egl.cpp rasterise_egl.cu
@@ -38,7 +41,7 @@ add_library(
     gl_dispatcher.h concurrentqueue.h blockingconcurrentqueue.h gl_common.h hwc.h
 )
 
-target_compile_features(rasterise PUBLIC cxx_std_11)
+#target_compile_features(rasterise PUBLIC cxx_std_11)
 target_link_libraries(rasterise ${EGL_LIBRARIES} ${OPENGL_LIBRARIES} ${Tensorflow_LIBRARY})
 
 # Put the compiled library in the python package folder, rather than whatever build folder is being used
